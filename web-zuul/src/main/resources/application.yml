@@ -1,0 +1,22 @@
+#路由实例名
+spring:
+  application:
+    name: api-gateway
+    
+
+server:
+  port: 5000
+  
+#将zuul路由注册到注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  #注册中心的服务地址
+  
+#zuul路由规则，将注册中心中实例WEB-PROVIDER7002对应的所有接口映射成/api-a/开头
+#不同的实例服务配置不同的（api-xx可以随意取名，path亦可以随意指定，service-id则必须是注册中心中存在的实例）信息
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      service-id: WEB-PROVIDER7002

@@ -1,0 +1,43 @@
+server:
+  port: 9000
+  
+##############################  actuator  #############################  
+#开启actuator监控功能  默认是true:功能禁用
+management:
+  security:
+    enabled: false
+  #配置根路径和端口，方便统一的安全控制
+  context-path: /manage
+  port: 9001  # -1 不存在的端口则可以关闭监控功能
+  # eg: http://localhost:9001/manage/health
+    
+#关闭所有的端点，也可以单独禁用某一个
+endpoints:
+  #enabled: false   #默认值true，都未禁用
+
+#开启远程关闭应用服务器端点 [post请求http://localhost:9000/shutdown]
+  shutdown:
+    enabled: true
+       
+#测试    actuator 显示info信息
+info: 
+  app.id: web-consumer
+  app.version: 1.0.0
+ 
+ 
+##############################  redis #############################  
+#redis 
+spring:
+  redis:
+    host: 192.168.112.129
+##############################  spring #############################  
+  application:
+    name: web-consumer
+    
+##############################  eureka #############################      
+eureka:
+  instance:
+    prefer-ip-address: true  #服务注册的方式是IP地址注册
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  #注册中心的服务地址

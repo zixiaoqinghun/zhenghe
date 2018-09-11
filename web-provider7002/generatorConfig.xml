@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="MysqlContext" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<!-- 通用mapper包 -->
+			<property name="mappers" value="com.richard.utils.mybatis.MyMapper" />
+		</plugin>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.112.129:3306/zhenghe" userId="root"
+			password="123456">
+		</jdbcConnection>
+
+		<!-- <commentGenerator> <property name="suppressDate" value="true" /> </commentGenerator> -->
+
+		<!-- pojo的生成包配置 -->
+		<!-- <javaModelGenerator targetPackage="com.richard.entity" targetProject="G:\sts_workspace\cloudstudy\springboot\src\main\java"> 
+			<property name="trimStrings" value="true" /> </javaModelGenerator> -->
+		<javaModelGenerator
+			targetPackage="com.richard.entity" targetProject="src/main/java" />
+
+		<!-- mapper的生成包配置 -->
+		<!-- <sqlMapGenerator targetPackage="test.xml" targetProject="G:\MyProject\src\main\resources" 
+			/> -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" />
+
+		<!-- mapper的java映射配置 -->
+		<!-- <javaClientGenerator type="XMLMAPPER" targetPackage="test.dao" targetProject="G:\MyProject\src\main\java" 
+			/> -->
+		<javaClientGenerator
+			targetPackage="com.richard.mapper" targetProject="src/main/java"
+			type="XMLMAPPER" />
+
+		<!-- <table tableName="%"> <generatedKey column="id" sqlStatement="Mysql" 
+			/> </table> -->
+		<table tableName="user" />
+	</context>
+</generatorConfiguration>

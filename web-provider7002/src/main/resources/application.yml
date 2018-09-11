@@ -1,0 +1,48 @@
+#swagger2
+#  http://localhost:7002/swagger-ui.html
+
+server:
+  port: 7002
+ 
+spring:
+  application:
+    name: web-provider
+    
+    
+  #数据库配置   
+  datasource:
+    url: jdbc:mysql://192.168.112.129:3306/zhenghe          # 数据库名称
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver                # mysql驱动包
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    dbcp2:
+      initial-size: 5                                       # 初始化连接数
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+      
+  #redis
+  redis:
+    host: 192.168.112.129
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
+  
+#eureka 配置
+eureka:
+  instance:
+    prefer-ip-address: true  #服务注册的方式是IP地址注册
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  #注册中心的服务地址
+      
+#mybatis sql 打印配置      
+logging:
+  level:
+     com.richard.mapper: debug
+     
+     
+    
