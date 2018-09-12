@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * 		1. application.yml中配置eureka的服务器server的配置信息
  * 		2. 注解@EnableEurekaServer开启Eureka服务注册功能
  */
-@EnableEurekaServer
+@EnableEurekaServer  //开启注册中心功能
 @SpringBootApplication
 public class App8761 {
 	public static void main(String[] args) {

@@ -7,7 +7,8 @@ spring:
 
 eureka:
   instance:
-    hostname: eureka-sever
+    hostname: localhost
+    prefer-ip-address: true
   client:
     register-with-eureka: false #注册中心不注册自己  
     fetch-registry: false #不从eureka上获取服务新消息
