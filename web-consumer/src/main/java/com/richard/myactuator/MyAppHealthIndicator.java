@@ -14,13 +14,15 @@ import org.springframework.stereotype.Component;
  * 		2. 定义自定义的安全检查指示器
  * 		3. 将类注册为容器组件
  */
+
+//健康页面显示的名字默认为类的除开HealthIndicator后缀后的首字母小写
 @Component
 public class MyAppHealthIndicator implements HealthIndicator {
 
 	@Override
 	public Health health() {
 		//Health.up().build(); //服务正常
-		return Health.down().withDetail("msg", "服务异常！").build();
+		return Health.down().withDetail("error msg", "服务异常！").build();
 	}
 
 }

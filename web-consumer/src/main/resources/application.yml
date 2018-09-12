@@ -1,6 +1,15 @@
 server:
   port: 9000
-  
+ 
+spring:
+  application:
+    name: web-consumer
+##############################  redis #############################  
+#redis 
+  redis:
+    host: 192.168.112.129
+    
+    
 ##############################  actuator  #############################  
 #开启actuator监控功能  默认是true:功能禁用
 management:
@@ -10,29 +19,24 @@ management:
   context-path: /manage
   port: 9001  # -1 不存在的端口则可以关闭监控功能
   # eg: http://localhost:9001/manage/health
-    
+  
 #关闭所有的端点，也可以单独禁用某一个
 endpoints:
   #enabled: false   #默认值true，都未禁用
+  
+  # http://localhost:9000/hystrix 登录hystrix的dashboard监控后台
+  # http://localhost:9001/manage/hystrix.stream 进入监控页面（ 因为配置了统一的根路径/manage和指定了监控端口9001）
+
 
 #开启远程关闭应用服务器端点 [post请求http://localhost:9000/shutdown]
   shutdown:
     enabled: true
-       
+
 #测试    actuator 显示info信息
 info: 
   app.id: web-consumer
   app.version: 1.0.0
  
- 
-##############################  redis #############################  
-#redis 
-spring:
-  redis:
-    host: 192.168.112.129
-##############################  spring #############################  
-  application:
-    name: web-consumer
     
 ##############################  eureka #############################      
 eureka:
@@ -41,3 +45,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/  #注册中心的服务地址
+      
