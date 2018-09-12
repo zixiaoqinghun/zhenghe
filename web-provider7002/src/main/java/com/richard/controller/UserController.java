@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -110,11 +111,14 @@ public class UserController {
 		return ResponseEntity.ok(r);
 	}
 	
+	@Value("${server.port}")
+	private String port;
 	
 	@GetMapping("/get/{userId}")
 	@ApiOperation(value = "用户id查询用户明细信息", notes = "用户id查询用户明细信息")
 	public ResponseEntity<JsonResult> getUserById(
 			@PathVariable("userId") @ApiParam(required=true,value="用户id",defaultValue="") Integer userId){
+		logger.info(">>>>>>>>>>>>: "+port);
 		JsonResult r = new JsonResult();
 		try {
 			//User user = this.userServcie.getUserById(userId);
