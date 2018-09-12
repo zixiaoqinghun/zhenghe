@@ -1,0 +1,13 @@
+1. 为何rest+ribbon 调用微服务的是指定具体的实体类型得到的结果都是空，而object.class则可以获得结果
+2. spring-boot-starter-actuator配置 spring-cloud-starter-hystrix-dashboard 才能完成hystrix的仪表盘监控显示
+<!-- Hystrix 仪表盘 -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+</dependency>
+
+<!-- 辅助hystrix dashboard 进行仪表盘显示 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
